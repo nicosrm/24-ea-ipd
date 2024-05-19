@@ -1,4 +1,4 @@
-# Prisoner' Dilemma
+# Iterative Prisoner's Dilemma
 
 ## Kontext
 
