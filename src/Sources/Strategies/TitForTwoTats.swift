@@ -18,7 +18,6 @@ class TitForTwoTats: StrategyProtocol {
     }
     
     func makeMove(opponentHistory: MoveHistory) -> Move {
-        let lastTwoMoves = opponentHistory.suffix(3)
         let move = (opponentHistory.suffix(3) == [Move.D, Move.D])
             ? Move.D : Move.C
         self.history.append(move)
