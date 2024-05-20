@@ -12,7 +12,6 @@ class GeneticStrategy: StrategyProtocol {
     var name: String
     
     /// Answers to opponent's last moves.
-    /// Might be `nil`, e.g. for pre-defined strategies.
     ///
     /// # Example
     /// ```swift
@@ -23,10 +22,10 @@ class GeneticStrategy: StrategyProtocol {
     /// ]
     /// ```
     let moveTable: [[Move]: Move]
-    // TODO: - Refactor move table --> (Axelrod, 1997)
     
     var history: MoveHistory
     
+    /// Initialize at least the last 3 moves in `history`.
     required init(
         moveTable: [[Move] : Move],
         history: MoveHistory
@@ -40,6 +39,7 @@ class GeneticStrategy: StrategyProtocol {
         let lastThreeMoves: [Move] = opponentHistory.suffix(3)
         
         if let move = self.moveTable[lastThreeMoves] {
+            self.history.append(move)
             return move
         }
         print(">> failure in GeneticStrategy makeMove")
