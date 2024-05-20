@@ -32,6 +32,9 @@ class GeneticStrategy: StrategyProtocol {
     ) {
         self.name = "Genetic Strategy"
         self.moveTable = moveTable
+        
+        // TODO: proper error handling
+        assert(history.count >= 3, "At least 3 initial moves must be specified")
         self.history = history
     }
     
@@ -46,6 +49,10 @@ class GeneticStrategy: StrategyProtocol {
         print(">> \(lastThreeMoves) not in move table")
         // should not happen
         return .random
+    }
+    
+    func clearHistory() {
+        self.history = []
     }
     
     func copyWith(
