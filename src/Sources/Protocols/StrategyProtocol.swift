@@ -17,8 +17,8 @@ protocol StrategyProtocol {
     var history: MoveHistory { get set }
     
     /// Make move based on passed opponent's history of moves.
-    /// Append made move to ``moveTable``.
-    /// 
+    /// Append made move to ``history``.
+    ///
     /// - Returns: Move that was made
     func makeMove(opponentHistory: MoveHistory) -> Move
 }
