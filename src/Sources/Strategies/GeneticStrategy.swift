@@ -11,7 +11,7 @@ class GeneticStrategy: StrategyProtocol {
     
     var name: String
     
-    /// Answers to opponent's last moves.
+    /// Answers to opponent's last three moves.
     ///
     /// # Example
     /// ```swift
@@ -27,11 +27,11 @@ class GeneticStrategy: StrategyProtocol {
     
     /// Initialize at least the last 3 moves in `history`.
     required init(
-        moveTable: [[Move] : Move],
-        history: MoveHistory
+        history: MoveHistory,
+        moveTable: [[Move] : Move]? = nil
     ) {
         self.name = "Genetic Strategy"
-        self.moveTable = moveTable
+        self.moveTable = moveTable ?? Self.randomMoveTable
         
         // TODO: proper error handling
         assert(history.count >= 3, "At least 3 initial moves must be specified")
@@ -56,12 +56,33 @@ class GeneticStrategy: StrategyProtocol {
     }
     
     func copyWith(
-        moveTable: [[Move] : Move]? = nil,
-        history: MoveHistory?
+        history: MoveHistory? = nil,
+        moveTable: [[Move] : Move]? = nil
     ) -> Self {
         return .init(
-            moveTable: moveTable ?? self.moveTable,
-            history: history ?? self.history
+            history: history ?? self.history,
+            moveTable: moveTable ?? self.moveTable
         )
+    }
+}
+
+// MARK: - Helper functions
+
+extension GeneticStrategy {
+    
+    /// Random move table.
+    /// See ``moveTable`` for the pattern.
+    static var randomMoveTable: [[Move]: Move] {
+        let moveTable: [[Move]: Move] = [
+            [.C, .C, .C]: .random,
+            [.C, .C, .D]: .random,
+            [.C, .D, .C]: .random,
+            [.C, .D, .D]: .random,
+            [.D, .C, .C]: .random,
+            [.D, .C, .D]: .random,
+            [.D, .D, .C]: .random,
+            [.D, .D, .D]: .random,
+        ]
+        return moveTable
     }
 }
