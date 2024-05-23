@@ -9,6 +9,8 @@ import Foundation
 /// Strategy usable for evolutionary algorithms.
 class GeneticStrategy: StrategyProtocol {
     
+    typealias MoveTable = [[Move]: Move]
+    
     var name: String
     
     /// Answers to opponent's last three moves.
@@ -21,7 +23,7 @@ class GeneticStrategy: StrategyProtocol {
     ///     // ...
     /// ]
     /// ```
-    let moveTable: [[Move]: Move]
+    let moveTable: MoveTable
     
     var history: MoveHistory
     
@@ -57,7 +59,7 @@ class GeneticStrategy: StrategyProtocol {
     
     func copyWith(
         history: MoveHistory? = nil,
-        moveTable: [[Move] : Move]? = nil
+        moveTable: MoveTable? = nil
     ) -> Self {
         return .init(
             history: history ?? self.history,
@@ -72,8 +74,8 @@ extension GeneticStrategy {
     
     /// Random move table.
     /// See ``moveTable`` for the pattern.
-    static var randomMoveTable: [[Move]: Move] {
-        let moveTable: [[Move]: Move] = [
+    static var randomMoveTable: MoveTable {
+        let moveTable: MoveTable = [
             [.C, .C, .C]: .random,
             [.C, .C, .D]: .random,
             [.C, .D, .C]: .random,
