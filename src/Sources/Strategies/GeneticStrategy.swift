@@ -52,25 +52,16 @@ class GeneticStrategy: StrategyProtocol {
         // should not happen
         return .random
     }
-    
-    func clearHistory() {
-        self.history = []
-    }
-    
-    func copyWith(
-        history: MoveHistory? = nil,
-        moveTable: MoveTable? = nil
-    ) -> Self {
-        return .init(
-            history: history ?? self.history,
-            moveTable: moveTable ?? self.moveTable
-        )
-    }
 }
 
 // MARK: - Helper functions
 
 extension GeneticStrategy {
+    
+    /// Clears history except for first three initial moves.
+    func clearHistory() {
+        self.history = Array(self.history.prefix(3))
+    }
     
     /// Random move table.
     /// See ``moveTable`` for the pattern.
@@ -86,5 +77,29 @@ extension GeneticStrategy {
             [.D, .D, .D]: .random,
         ]
         return moveTable
+    }
+    
+    func copyWith(
+        history: MoveHistory? = nil,
+        moveTable: MoveTable? = nil
+    ) -> Self {
+        return .init(
+            history: history ?? self.history,
+            moveTable: moveTable ?? self.moveTable
+        )
+    }
+    
+    /// Print instance of this class. Sort ``moveTable`` first.
+    func debugPrint() {
+        print(self.name)
+        
+        print("moveTable")
+        let keys = self.moveTable.keys.sorted()
+        for key in keys {
+            print("\(key) --> \(self.moveTable[key]!)")
+        }
+        
+        print("history")
+        print(self.history)
     }
 }

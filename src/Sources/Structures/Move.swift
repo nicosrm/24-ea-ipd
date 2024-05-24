@@ -26,6 +26,15 @@ enum Move: Int, Hashable, CaseIterable {
     }
 }
 
+extension Move: Comparable {
+    
+    static func < (lhs: Move, rhs: Move) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+}
+
+// MARK: - MovePair
+
 struct MovePair: Hashable {
     
     let movePlayerA: Move
@@ -36,3 +45,25 @@ struct MovePair: Hashable {
         self.movePlayerB = movePlayerB
     }
 }
+
+// MARK: - [Move]
+
+extension [Move]: Comparable {
+    
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        let leftValue = convertToBinary(lhs) ?? 0
+        let rightValue = convertToBinary(rhs) ?? 0
+        return leftValue < rightValue
+    }
+    
+    private static func convertToBinary(_ array: Self) -> Int? {
+        var binaryString = ""
+        
+        for move in array {
+            binaryString += String(move.rawValue)
+        }
+        
+        return Int(binaryString, radix: 2)
+    }
+}
+
