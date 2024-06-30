@@ -30,6 +30,4 @@ struct ProbabilisticMutation: MutationProtocol {
         
         return strategy.copyWith(moveTable: childMoveTable)
     }
-    
-    
 }
