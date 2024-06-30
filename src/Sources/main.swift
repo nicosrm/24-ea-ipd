@@ -16,6 +16,7 @@ func crossoverExample() {
     print()
     
     let (childA, childB) = OnePointCrossover.crossover(strategyA, strategyB)
+//    let (childA, childB) = UniformCrossover.crossover(strategyA, strategyB)
     
     print("**Child A**")
     childA.debugPrint()
