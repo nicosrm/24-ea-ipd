@@ -14,7 +14,7 @@ class Match {
     let playerB: any StrategyProtocol
     
     // Game object to manage scores
-    let game: Game
+    let game: ScoreHelper
     
     /// Number of turns to play.
     let turns: Int
@@ -41,7 +41,7 @@ class Match {
         self.playerA = playerA
         self.playerB = playerB
         
-        self.game = Game(playerA: playerA, playerB: playerB)
+        self.game = ScoreHelper(playerA: playerA, playerB: playerB)
         
         self.turns = turns
         self.moves = [MovePair]()

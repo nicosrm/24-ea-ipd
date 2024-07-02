@@ -1,15 +1,13 @@
 //
-//  Game.swift
+//  ScoreHelper.swift
 //
 //  Created by nicosrm
 //
 
 import Foundation
 
-// TODO: Rename to `ScoreHelper`?
-
-/// Game class managing two players and their scores.
-class Game {
+/// Score helper class managing two players and their scores.
+class ScoreHelper {
     
     /// Pair of scores for player A and player B according to ``Game``'s
     /// ``playerA`` and ``playerB``.
