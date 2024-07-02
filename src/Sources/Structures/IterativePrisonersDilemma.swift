@@ -17,7 +17,7 @@ struct IterativePrisonersDilemma {
     
     let crossover: any CrossoverProtocol
     let mutator: any MutationProtocol
-    let fitnessCalculator: any FitnessProtocol
+//    let fitnessCalculator: any FitnessProtocol
     
 //    let selectFunction: (Genotype, Genotype) -> Genotype
 }
