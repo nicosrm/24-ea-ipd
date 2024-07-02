@@ -39,8 +39,23 @@ func mutationExample() {
     ProbabilisticMutation(mutationRate: 0.1).mutate(parent).debugPrint()
 }
 
+func tournamentExample() {
+    let populationSize = 10
+    let tournament = Tournament(populationSize: populationSize, iterationCount: 5)
+    tournament.play()
+    
+    print("**Tournament scores**")
+    print(tournament.scores.sorted(by: >))
+}
+
+func printDivider() {
+    print()
+    print(String(repeating: "=", count: 100))
+    print()
+}
+
 crossoverExample()
-print()
-print(String(repeating: "=", count: 100))
-print()
+printDivider()
 mutationExample()
+printDivider()
+tournamentExample()
