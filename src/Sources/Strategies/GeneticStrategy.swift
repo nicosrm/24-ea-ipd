@@ -35,7 +35,6 @@ class GeneticStrategy: StrategyProtocol {
         self.name = "Genetic Strategy"
         self.moveTable = moveTable ?? Self.randomMoveTable
         
-        // TODO: proper error handling
         assert(history.count >= 3, "At least 3 initial moves must be specified")
         self.history = history
     }

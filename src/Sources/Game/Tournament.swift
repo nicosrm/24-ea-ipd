@@ -28,10 +28,6 @@ class Tournament {
         // initialize scores with 0
         self.scores = Array(repeating: 0, count: population.count)
         
-        // TODO: Remove when tested
-        assert(self.population.count == self.scores.count,
-               "Dimensions of population and scores do not match!")
-        
         assert(iterationCount > 0, "At least one iteration must be done!")
         self.iterationCount = iterationCount
     }
@@ -54,8 +50,6 @@ class Tournament {
             let individual = GeneticStrategy(history: history)
             randomPopulation.append(individual)
         }
-        // TODO: Remove when tested
-        assert(randomPopulation.count == populationSize)
         
         self.init(population: randomPopulation, iterationCount: iterationCount)
     }
