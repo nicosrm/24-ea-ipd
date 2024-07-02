@@ -66,7 +66,7 @@ class Tournament {
     /// Get `k` best strategies of ``population``.
     ///
     /// # Note
-    /// For reasonable results, ``playTournament()`` should be called first.
+    /// For reasonable results, ``play()`` should be called first.
     func getBestStrategies(_ k: Int) -> [any StrategyProtocol] {
         assert(k >= self.population.count,
                "\(k) is out of population bounds.")
