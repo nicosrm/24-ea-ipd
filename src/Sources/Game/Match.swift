@@ -26,7 +26,7 @@ class Match {
     ///
     /// Both players have to be initialized with their corresponding three
     /// initial moves (see ``StrategyProtocol/history``.
-    init?(
+    init(
         playerA: any StrategyProtocol,
         playerB: any StrategyProtocol,
         turns: Int
