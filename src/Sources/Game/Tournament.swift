@@ -36,8 +36,32 @@ class Tournament {
         self.iterationCount = iterationCount
     }
     
+    /// Create ``Tournament`` with `populationSize` many random
+    /// ``GeneticStrategy``s as a population.
+    ///
+    /// # Note
+    /// Each ``GeneticStrategy/history`` of the individuals will be initialised
+    /// with random values. Also, a population must have at least two
+    /// individuals.
+    convenience init(populationSize: Int, iterationCount: Int) {
+        assert(populationSize >= 2,
+               "Population must have at least two individuals.")
+        
+        // generate random population
+        var randomPopulation = [any StrategyProtocol]()
+        for _ in 0..<populationSize {
+            let history: [Move] = [.random, .random, .random]
+            let individual = GeneticStrategy(history: history)
+            randomPopulation.append(individual)
+        }
+        // TODO: Remove when tested
+        assert(randomPopulation.count == populationSize)
+        
+        self.init(population: randomPopulation, iterationCount: iterationCount)
+    }
+    
     /// Play each player (i.e. strategy) of ``population`` against each player.
-    func playTournament() {
+    func play() {
         for indexA in 0..<population.count {
             for indexB in 0..<population.count {
                 self.run(indexA, against: indexB)
