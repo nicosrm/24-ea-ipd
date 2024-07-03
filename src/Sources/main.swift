@@ -48,14 +48,39 @@ func tournamentExample() {
     print(tournament.scores.sorted(by: >))
 }
 
+func evolutionExample() {
+    let populationSize = 20
+    let epochCount = 10
+    let matchIterationCount = 20
+    let mutationRate = 0.005
+    let recombinationRate = 0.7
+    
+    let evolution = Evolution(
+        populationSize: populationSize,
+        epochCount: epochCount,
+        matchIterationCount: matchIterationCount,
+        mutation: ProbabilisticMutation(mutationRate: mutationRate),
+        mutationRate: mutationRate,
+        crossover: OnePointCrossover.self,
+        recombinationRate: recombinationRate,
+        selection: SelectionFitnessProportional.self
+    )
+    let (bestStrategy, score) = evolution.run()
+    print()
+    print(bestStrategy.moveTable)
+    print("with score \(score)")
+}
+
 func printDivider() {
     print()
     print(String(repeating: "=", count: 100))
     print()
 }
 
-crossoverExample()
-printDivider()
-mutationExample()
-printDivider()
-tournamentExample()
+//crossoverExample()
+//printDivider()
+//mutationExample()
+//printDivider()
+//tournamentExample()
+
+evolutionExample()
