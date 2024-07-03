@@ -73,6 +73,15 @@ class Tournament {
         let bestStrategies = self.sortedPopulation.prefix(k)
         return Array(bestStrategies)
     }
+    
+    /// ``population`` sorted by ``scores``
+    var sortedPopulation: [any StrategyProtocol] {
+        let zip = Array(zip(population, scores))
+        let sorted = zip.sorted { a, b in
+            return a.1 < b.1
+        }
+        return sorted.map { $0.0 }
+    }
 }
 
 // MARK: - Private helpers
@@ -100,14 +109,5 @@ private extension Tournament {
         let score = match.game.score
         scores[indexA] += score.A
         scores[indexB] += score.B
-    }
-    
-    /// ``population`` sorted by ``scores``
-    var sortedPopulation: [any StrategyProtocol] {
-        let zip = Array(zip(population, scores))
-        let sorted = zip.sorted { a, b in
-            return a.1 < b.1
-        }
-        return sorted.map { $0.0 }
     }
 }
