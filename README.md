@@ -56,12 +56,31 @@ algorithms.
 
 ## Usage
 
+### Local Usage
+
 ```sh
 $ cd src
+$ swift build
 $ swift run PrisonersDilemma
 ```
 
 The resulting info logs will be stored in `src/logs/`.
+
+
+### Using with Docker
+
+```sh
+$ docker build -t ipd .
+$ docker run -it --rm --name ipd ipd
+# now inside container
+$ swift run PrisonersDilemma
+```
+
+To copy the logs, run the following command:
+
+```sh
+$ docker cp ipd:logs/. src/logs
+```
 
 
 ## License
