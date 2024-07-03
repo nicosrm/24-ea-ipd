@@ -11,7 +11,7 @@ let log = Logger(logFileName: "ipd-\(Logger.formattedCurrentDate).log")
 
 class Logger {
     
-    let logFilePath: String
+    private (set) var logFilePath: String
     
     init(logFileName: String) {
         let currentDirectory = FileManager.default.currentDirectoryPath
@@ -53,6 +53,16 @@ class Logger {
         } else {
             print("Error converting log message to data.")
         }
+    }
+    
+    func newFile(logFileName: String) {
+        let currentDirectory = FileManager.default.currentDirectoryPath
+        let pathDirectory = (currentDirectory as NSString)
+            .appendingPathComponent("logs")
+        let logFilePath = (pathDirectory as NSString)
+            .appendingPathComponent(logFileName)
+        self.logFilePath = logFilePath
+        createLogFileIfNeeded()
     }
     
     static var formattedCurrentDate: String {
