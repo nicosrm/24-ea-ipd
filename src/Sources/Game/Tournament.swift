@@ -78,7 +78,7 @@ class Tournament {
     var sortedPopulation: [any StrategyProtocol] {
         let zip = Array(zip(population, scores))
         let sorted = zip.sorted { a, b in
-            return a.1 < b.1
+            return a.1 > b.1
         }
         return sorted.map { $0.0 }
     }

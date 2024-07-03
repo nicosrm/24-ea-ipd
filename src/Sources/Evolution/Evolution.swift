@@ -81,7 +81,7 @@ class Evolution {
             print("Playing tournament...")
             tournament.play()
             
-            print("Best score: \(tournament.scores.sorted(by: <).first!)")
+            print("Scores: \(tournament.scores.sorted(by: >))")
             
             // select individuals
             let selection = self.select(basedOn: tournament)
@@ -103,10 +103,10 @@ class Evolution {
         print("Playing final tournament...")
         tournament.play()
         
-        print("Final scores: \(tournament.scores.sorted(by: <))")
+        print("Final scores: \(tournament.scores.sorted(by: >))")
         
         let bestStrategy = tournament.sortedPopulation.first! as! GeneticStrategy
-        let bestScore = tournament.scores.sorted(by: <).first!
+        let bestScore = tournament.scores.sorted(by: >).first!
         return (bestStrategy, bestScore)
     }
 }
@@ -121,10 +121,9 @@ private extension Evolution {
         print("Selecting individuals of population...")
         let selectionIndices = self.selection.select(
             self.population.count,
-            from: tournament.scores.sorted(by: <)
+            from: tournament.scores.sorted(by: >)
         )
         let selection = selectionIndices.map { tournament.sortedPopulation[$0] }
-        print("Selected individuals at indices \(selectionIndices).")
         
         return selection as! [GeneticStrategy]
     }
