@@ -54,6 +54,16 @@ algorithms.
 - Project for *C195: Evolutionary Algorithms* by [Prof Karsten Weicker](https://fim.htwk-leipzig.de/fakultaet/personen/professorinnen-und-professoren/karsten-weicker/)
 
 
+## Usage
+
+```sh
+$ cd src
+$ swift run PrisonersDilemma
+```
+
+The resulting info logs will be stored in `src/logs/`.
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
