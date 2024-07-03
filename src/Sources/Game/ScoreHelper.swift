@@ -30,8 +30,8 @@ class ScoreHelper {
     func updateScoreWith(_ movePair: MovePair) {
         let payoffMatrix = Constants.Points.payoffMatrix
         guard let points: ScorePair = payoffMatrix[movePair] else {
-            print(">> Failure in Game.updateScoreWith(_:)")
-            print(">> \(movePair) is not in payoffMatrix")
+            log.log(">> Failure in Game.updateScoreWith(_:)")
+            log.log(">> \(movePair) is not in payoffMatrix")
             return
         }
         

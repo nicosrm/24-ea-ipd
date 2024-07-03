@@ -4,38 +4,40 @@
 //  Created by nicosrm
 //
 
+import Foundation
+
 func crossoverExample() {
     let strategyA = GeneticStrategy(history: [.C, .C, .C])
     let strategyB = GeneticStrategy(history: [.C, .C, .C])
     
-    print("**Strategy A**")
+    log.log("**Strategy A**")
     strategyA.debugPrint()
-    print()
-    print("**Strategy B**")
+    log.log()
+    log.log("**Strategy B**")
     strategyB.debugPrint()
-    print()
+    log.log()
     
     let (childA, childB) = OnePointCrossover.crossover(strategyA, strategyB)
 //    let (childA, childB) = UniformCrossover.crossover(strategyA, strategyB)
     
-    print("**Child A**")
+    log.log("**Child A**")
     childA.debugPrint()
-    print()
-    print("**Child B**")
+    log.log()
+    log.log("**Child B**")
     childB.debugPrint()
 }
 
 func mutationExample() {
     let parent = GeneticStrategy(history: [.C, .C, .C])
-    print("**Parent**")
+    log.log("**Parent**")
     parent.debugPrint()
     
-    print()
-    print("**One Flip Mutation**")
+    log.log()
+    log.log("**One Flip Mutation**")
     OneFlipMutation().mutate(parent).debugPrint()
     
-    print()
-    print("**Probabilistic Mutation**")
+    log.log()
+    log.log("**Probabilistic Mutation**")
     ProbabilisticMutation(mutationRate: 0.1).mutate(parent).debugPrint()
 }
 
@@ -44,15 +46,15 @@ func tournamentExample() {
     let tournament = Tournament(populationSize: populationSize, iterationCount: 5)
     tournament.play()
     
-    print("**Tournament scores**")
-    print(tournament.scores.sorted(by: >))
+    log.log("**Tournament scores**")
+    log.log(tournament.scores.sorted(by: >))
 }
 
 func evolutionExample() {
-    let populationSize = 20
-    let epochCount = 10
+    let populationSize = 30
+    let epochCount = 20
     let matchIterationCount = 20
-    let mutationRate = 0.005
+    let mutationRate = 0.01
     let recombinationRate = 0.7
     
     let evolution = Evolution(
@@ -66,15 +68,15 @@ func evolutionExample() {
         selection: SelectionFitnessProportional.self
     )
     let (bestStrategy, score) = evolution.run()
-    print()
-    print(bestStrategy.moveTable)
-    print("with score \(score)")
+    log.log()
+    log.log(bestStrategy.moveTable)
+    log.log("with score \(score)")
 }
 
 func printDivider() {
-    print()
-    print(String(repeating: "=", count: 100))
-    print()
+    log.log()
+    log.log(String(repeating: "=", count: 100))
+    log.log()
 }
 
 //crossoverExample()

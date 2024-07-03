@@ -90,15 +90,15 @@ extension GeneticStrategy {
     
     /// Print instance of this class. Sort ``moveTable`` first.
     func debugPrint() {
-        print(self.name)
+        log.log(self.name)
         
-        print("moveTable")
+        log.log("moveTable")
         let keys = self.moveTable.keys.sorted()
         for key in keys {
-            print("\(key) --> \(self.moveTable[key]!)")
+            log.log("\(key) --> \(self.moveTable[key]!)")
         }
         
-        print("history")
-        print(self.history)
+        log.log("history")
+        log.log(self.history)
     }
 }
