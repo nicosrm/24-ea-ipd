@@ -39,17 +39,17 @@ class GeneticStrategy: StrategyProtocol {
         self.history = history
     }
     
+    /// Generate random ``GeneticStrategy``.
+    convenience init() {
+        let history: [Move] = [.random, .random, .random]
+        self.init(history: history)
+    }
+    
     func makeMove(opponentHistory: MoveHistory) -> Move {
         let lastThreeMoves: [Move] = opponentHistory.suffix(3)
-        
-        if let move = self.moveTable[lastThreeMoves] {
-            self.history.append(move)
-            return move
-        }
-        print(">> failure in GeneticStrategy makeMove")
-        print(">> \(lastThreeMoves) not in move table")
-        // should not happen
-        return .random
+        let move = self.moveTable[lastThreeMoves]!
+        self.history.append(move)
+        return move
     }
 }
 

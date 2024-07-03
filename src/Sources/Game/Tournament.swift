@@ -46,8 +46,7 @@ class Tournament {
         // generate random population
         var randomPopulation = [any StrategyProtocol]()
         for _ in 0..<populationSize {
-            let history: [Move] = [.random, .random, .random]
-            let individual = GeneticStrategy(history: history)
+            let individual = GeneticStrategy()
             randomPopulation.append(individual)
         }
         
