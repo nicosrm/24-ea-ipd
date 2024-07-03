@@ -50,12 +50,14 @@ func tournamentExample() {
     log.log(tournament.scores.sorted(by: >))
 }
 
-func evolutionExample() {
-    let populationSize = 30
-    let epochCount = 20
-    let matchIterationCount = 20
-    let mutationRate = 0.01
-    let recombinationRate = 0.7
+func evolutionExample(mutationRate: Double, recombinationRate: Double) {
+    let populationSize = 50
+    let epochCount = 30
+    let matchIterationCount = 25
+    
+    log.log("mutation rate: \(mutationRate)")
+    log.log("recombination rate: \(recombinationRate)")
+    log.log()
     
     let evolution = Evolution(
         populationSize: populationSize,
@@ -79,10 +81,27 @@ func printDivider() {
     log.log()
 }
 
+func largeExample() {
+    let mutationRates = [0.001, 0.005, 0.01]
+    let recombinationRates = [0.6, 0.7, 0.8, 0.9]
+    
+    for mutationRate in mutationRates {
+        for recombinationRate in recombinationRates {
+            log.newFile(logFileName: "ipd-\(mutationRate)-\(recombinationRate)")
+            
+            for _ in 0..<10 {
+                evolutionExample(mutationRate: mutationRate,
+                                 recombinationRate: recombinationRate)
+                printDivider()
+            }
+        }
+    }
+}
+
 //crossoverExample()
 //printDivider()
 //mutationExample()
 //printDivider()
 //tournamentExample()
 
-evolutionExample()
+largeExample()
