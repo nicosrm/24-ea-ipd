@@ -70,9 +70,9 @@ class Evolution {
     }
     
     /// Run evolution with defined parameters to determine best strategy.
-    func run() -> (GeneticStrategy, Int) {
+    func run() -> (GeneticStrategy, Int){
         for epoch in 0..<epochCount {
-            log.log("Epoch \(epoch)")
+            log.log("Epoch \(epoch + 1) / \(epochCount)")
             
             let tournament = Tournament(
                 population: self.population,
