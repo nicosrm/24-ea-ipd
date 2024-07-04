@@ -44,9 +44,7 @@ algorithms.
 |--------------------------------------|-------------------------------------------------------|
 | `src/`                               | source files                                          |
 | [`doc/doc.md`](doc/doc.md)           | documentation                                         |
-| TBA                                  | presentation of preliminary results from 05 July 2024 |
 | [`bibliography.md`](bibliography.md) | bibliography notices                                  |
-<!-- TODO: link presentation -->
 
 
 ## Context
@@ -117,7 +115,7 @@ OPTIONS:
                           Recombination rate
 
   --selection <selection> Selection protocol (values: fitness-proportional; default: fitness-proportional)
-  
+
   -h, --help              Show help information.
 ```
 
