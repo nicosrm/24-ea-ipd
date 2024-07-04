@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import ArgumentParser
 
 protocol CrossoverProtocol {
     
@@ -13,4 +14,19 @@ protocol CrossoverProtocol {
         _ parentA: GeneticStrategy,
         _ parentB: GeneticStrategy
     ) -> (GeneticStrategy, GeneticStrategy)
+}
+
+enum Crossover: String, CaseIterable, ExpressibleByArgument {
+    
+    case onePoint = "one-point"
+    case uniform = "uniform"
+    
+    func getProtocol() -> CrossoverProtocol.Type {
+        switch self {
+        case .onePoint:
+            return OnePointCrossover.self
+        case .uniform:
+            return UniformCrossover.self
+        }
+    }
 }

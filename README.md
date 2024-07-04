@@ -58,10 +58,10 @@ algorithms.
 
 ### Local Usage
 
-```sh
+```
 $ cd src
 $ swift build
-$ swift run PrisonersDilemma
+$ swift run IPD -m <mutation-rate> -r <recombination-rate>
 ```
 
 The resulting info logs will be stored in `src/logs/`.
@@ -69,17 +69,56 @@ The resulting info logs will be stored in `src/logs/`.
 
 ### Using with Docker
 
-```sh
+```
 $ docker build -t ipd .
 $ docker run -it --rm --name ipd ipd
 # now inside container
-$ swift run PrisonersDilemma
+$ swift run IPD -m <mutation-rate> -r <recombination-rate>
 ```
 
 To copy the logs, run the following command:
 
-```sh
+```
 $ docker cp ipd:logs/. src/logs
+```
+
+
+### Arguments
+
+```
+$ swift run IPD --help
+USAGE: ipd [--population-size <population-size>] \
+           [--epoch-count <epoch-count>] \
+           [--match-iteration-count <match-iteration-count>] \
+           [--mutation <mutation>] \
+           --mutation-rate <mutation-rate> \
+           [--crossover <crossover>] \
+           --recombination-rate <recombination-rate> \
+           [--selection <selection>]
+
+OPTIONS:
+  --population-size <population-size>
+                          Number of individuals in population (default: 50)
+
+  --epoch-count <epoch-count>
+                          Number of epochs (default: 30)
+
+  --match-iteration-count <match-iteration-count>
+                          Number of iterations per match (default: 25)
+
+  --mutation <mutation>   Mutation protocol (values: one-flip, probabilistic; default: one-flip)
+
+  -m, --mutation-rate <mutation-rate>
+                          Mutation rate
+
+  --crossover <crossover> Crossover protocol (values: one-point, uniform; default: one-point)
+
+  -r, --recombination-rate <recombination-rate>
+                          Recombination rate
+
+  --selection <selection> Selection protocol (values: fitness-proportional; default: fitness-proportional)
+  
+  -h, --help              Show help information.
 ```
 
 

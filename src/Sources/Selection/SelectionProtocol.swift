@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import ArgumentParser
 
 protocol SelectionProtocol {
     
@@ -12,4 +13,16 @@ protocol SelectionProtocol {
     /// ``Tournament/scores``.
     /// Note that the passed scores need to be sorted descensional.
     static func select(_ k: Int, from sortedScores: [Int]) -> [Int]
+}
+
+enum Selection: String, CaseIterable, ExpressibleByArgument {
+    
+    case fitnessProportional = "fitness-proportional"
+    
+    func getProtocol() -> SelectionProtocol.Type {
+        switch self {
+        case .fitnessProportional:
+            return SelectionFitnessProportional.self
+        }
+    }
 }
