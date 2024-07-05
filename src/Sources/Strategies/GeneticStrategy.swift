@@ -89,7 +89,7 @@ extension GeneticStrategy {
     }
     
     /// Print instance of this class. Sort ``moveTable`` first.
-    func debugPrint() {
+    func debugPrint(includeHistory: Bool = true) {
         log.log(self.name)
         
         log.log("moveTable")
@@ -98,7 +98,9 @@ extension GeneticStrategy {
             log.log("\(key) --> \(self.moveTable[key]!)")
         }
         
-        log.log("history")
-        log.log(self.history)
+        if includeHistory {
+            log.log("history")
+            log.log(self.history)
+        }
     }
 }

@@ -50,7 +50,8 @@ struct IPD: ParsableCommand {
         
         let (bestStrategy, score) = evolution.run()
         log.log()
-        log.log(bestStrategy.moveTable.sorted(by: <))
+        log.log("Best strategy")
+        bestStrategy.debugPrint(includeHistory: false)
         log.log("with score \(score)")
     }
 }
