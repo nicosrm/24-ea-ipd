@@ -77,6 +77,10 @@ class Evolution {
             // select individuals
             let selection = self.select(self.population.count)
             
+            let best = self.getBest(from: selection)
+            log.log("Best strategy (wins: \(best.wins))")
+            best.strategy.debugPrint(includeHistory: false)
+            
             // create new population by performing recombination / mutation
             let newPopulation = self.recombineAndMutate(
                 selection.map { $0.strategy }
@@ -153,5 +157,14 @@ private extension Evolution {
         let childA = self.mutation.mutate(parentA)
         let childB = self.mutation.mutate(parentB)
         return (childA, childB)
+    }
+    
+    func getBest(
+        from selection: [(GeneticStrategy, Int)]
+    ) -> (strategy: GeneticStrategy, wins: Int) {
+        // sort by score
+        let sorted = selection.sorted { $0.1 > $1.1 }
+        let best = sorted.first!
+        return best
     }
 }
