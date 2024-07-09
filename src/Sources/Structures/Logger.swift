@@ -12,6 +12,7 @@ let log = Logger(logFileName: "ipd-\(Logger.formattedCurrentDate).log")
 class Logger {
     
     private (set) var logFilePath: String
+    private var isInDerivedData: Bool
     
     init(logFileName: String) {
         let currentDirectory = FileManager.default.currentDirectoryPath
@@ -20,7 +21,10 @@ class Logger {
         let logFilePath = (pathDirectory as NSString)
             .appendingPathComponent(logFileName)
         self.logFilePath = logFilePath
-        createLogFileIfNeeded()
+        
+        self.isInDerivedData = logFilePath.contains("DerivedData")
+    
+        self.createLogFileIfNeeded()
     }
     
     func log(_ items: Any...) {
@@ -28,13 +32,6 @@ class Logger {
         let terminator = "\n"
         
         let output = items.map { "\($0)" }.joined(separator: separator)
-        
-        guard let fileHandle = FileHandle(forWritingAtPath: logFilePath) else {
-            print("Error opening file at path: \(logFilePath)")
-            return
-        }
-        
-        fileHandle.seekToEndOfFile()
     
         let logMessage: String
         if output == terminator || output == "" {
@@ -46,6 +43,17 @@ class Logger {
         }
         
         print(logMessage, terminator: "")
+        
+        guard !self.isInDerivedData else {
+            return
+        }
+        
+        guard let fileHandle = FileHandle(forWritingAtPath: logFilePath) else {
+            print("Error opening file at path: \(logFilePath)")
+            return
+        }
+        
+        fileHandle.seekToEndOfFile()
         
         if let data = logMessage.data(using: .utf8) {
             fileHandle.write(data)
@@ -62,7 +70,10 @@ class Logger {
         let logFilePath = (pathDirectory as NSString)
             .appendingPathComponent(logFileName)
         self.logFilePath = logFilePath
-        createLogFileIfNeeded()
+        
+        self.isInDerivedData = logFilePath.contains("DerivedData")
+        
+        self.createLogFileIfNeeded()
     }
     
     static var formattedCurrentDate: String {
@@ -79,6 +90,10 @@ class Logger {
 private extension Logger {
     
     func createLogFileIfNeeded() {
+        guard !self.isInDerivedData else {
+            return
+        }
+        
         if !FileManager.default.fileExists(atPath: logFilePath) {
             FileManager.default.createFile(
                 atPath: logFilePath,
