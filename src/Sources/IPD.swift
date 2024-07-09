@@ -32,7 +32,7 @@ struct IPD: ParsableCommand {
     var recombinationRate: Double
     
     @Option(name: .long, help: "Selection protocol")
-    var selection: Selection = .fitnessProportional
+    var selection: Selection = .oneStepTournament
     
     mutating func run() throws {
         logParameters()

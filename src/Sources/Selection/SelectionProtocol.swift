@@ -9,20 +9,30 @@ import ArgumentParser
 
 protocol SelectionProtocol {
     
-    /// Determine indices of `k` individuals to select based on their
-    /// ``Tournament/scores``.
-    /// Note that the passed scores need to be sorted descensional.
-    static func select(_ k: Int, from sortedScores: [Int]) -> [Int]
+    var population: [GeneticStrategy] { get }
+    var selectionCount: Int { get }
+    
+    var directTournamentCount: Int { get }
+    var matchIterationCount: Int { get }
+    
+    init(
+        population: [GeneticStrategy],
+        selectionCount: Int,
+        directTournierCount: Int,
+        matchIterationCount: Int
+    )
+    
+    func select() -> [(GeneticStrategy, Int)]
 }
 
 enum Selection: String, CaseIterable, ExpressibleByArgument {
     
-    case fitnessProportional = "fitness-proportional"
+    case oneStepTournament = "1-tournament"
     
     func getProtocol() -> SelectionProtocol.Type {
         switch self {
-        case .fitnessProportional:
-            return SelectionFitnessProportional.self
+        case .oneStepTournament:
+            return OneStepTournamentSelection.self
         }
     }
 }

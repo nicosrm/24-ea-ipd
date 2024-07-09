@@ -114,7 +114,7 @@ OPTIONS:
   -r, --recombination-rate <recombination-rate>
                           Recombination rate
 
-  --selection <selection> Selection protocol (values: fitness-proportional; default: fitness-proportional)
+  --selection <selection> Selection protocol (values: 1-tournament; default: 1-tournament)
 
   -h, --help              Show help information.
 ```

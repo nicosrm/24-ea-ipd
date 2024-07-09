@@ -70,24 +70,17 @@ class Evolution {
     }
     
     /// Run evolution with defined parameters to determine best strategy.
-    func run() -> (GeneticStrategy, Int){
+    func run() -> (GeneticStrategy, Int) {
         for epoch in 0..<epochCount {
             log.log("Epoch \(epoch + 1) / \(epochCount)")
             
-            let tournament = Tournament(
-                population: self.population,
-                iterationCount: self.matchIterationCount
-            )
-            log.log("Playing tournament...")
-            tournament.play()
-            
-            log.log("Scores: \(tournament.scores.sorted(by: >))")
-            
             // select individuals
-            let selection = self.select(basedOn: tournament)
+            let selection = self.select(self.population.count)
             
             // create new population by performing recombination / mutation
-            let newPopulation = self.recombineAndMutate(selection)
+            let newPopulation = self.recombineAndMutate(
+                selection.map { $0.strategy }
+            )
             
             // update population
             self.population = newPopulation
@@ -96,18 +89,10 @@ class Evolution {
         }
         
         // determine best strategy
-        let tournament = Tournament(
-            population: self.population,
-            iterationCount: self.matchIterationCount
-        )
         log.log("Playing final tournament...")
-        tournament.play()
+        let best = self.select(1).first!
         
-        log.log("Final scores: \(tournament.scores.sorted(by: >))")
-        
-        let bestStrategy = tournament.sortedPopulation.first! as! GeneticStrategy
-        let bestScore = tournament.scores.sorted(by: >).first!
-        return (bestStrategy, bestScore)
+        return (best.strategy, best.wins)
     }
 }
 
@@ -115,17 +100,19 @@ class Evolution {
 
 private extension Evolution {
     
-    /// Select population based on passed ``Tournament`` using initially passed
-    /// ``selection`` algorithm.
-    func select(basedOn tournament: Tournament) -> [GeneticStrategy] {
+    func select(
+        _ selectionCount: Int
+    ) -> [(strategy: GeneticStrategy, wins: Int)] {
         log.log("Selecting individuals of population...")
-        let selectionIndices = self.selection.select(
-            self.population.count,
-            from: tournament.scores.sorted(by: >)
-        )
-        let selection = selectionIndices.map { tournament.sortedPopulation[$0] }
         
-        return selection as! [GeneticStrategy]
+        let selectionInstance = self.selection.init(
+            population: self.population,
+            selectionCount: selectionCount,
+            directTournierCount: 5,
+            matchIterationCount: self.matchIterationCount
+        )
+        let selection = selectionInstance.select()
+        return selection
     }
     
     /// Create new population based on passed selection by performing
@@ -134,9 +121,9 @@ private extension Evolution {
         log.log("Recombining and mutating selection...")
         var newPopulation = [GeneticStrategy]()
         
-        for i in 1...(self.population.count / 2) {
-            let parentA = selection[2 * i - 1]
-            let parentB = selection[2 * i]
+        for i in 0..<(selection.count / 2) {
+            let parentA = selection[2 * i]
+            let parentB = selection[2 * i + 1]
             
             let (childA, childB) = self.recombineOrMutate(
                 parentA: parentA,

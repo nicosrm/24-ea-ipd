@@ -88,9 +88,8 @@ struct Example {
         }
         
         let selectionProtocol: SelectionProtocol.Type = switch selection {
-        case .fitnessProportional: SelectionFitnessProportional.self
+        case .oneStepTournament: OneStepTournamentSelection.self
         }
-        
         
         let evolution = Evolution(
             populationSize: populationSize,
