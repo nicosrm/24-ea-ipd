@@ -101,10 +101,10 @@ struct Example {
             recombinationRate: recombinationRate,
             selection: selectionProtocol
         )
-        let (bestStrategy, score) = evolution.run()
+        let best = evolution.run()
         log.log()
-        log.log(bestStrategy.moveTable.sorted(by: <))
-        log.log("with score \(score)")
+        log.log(best.strategy.moveTable.sorted(by: <))
+        log.log("with wins \(best.wins)")
     }
     
     static func printDivider() {

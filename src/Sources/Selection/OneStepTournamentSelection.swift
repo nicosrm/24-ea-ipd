@@ -30,7 +30,7 @@ class OneStepTournamentSelection: SelectionProtocol {
         self.matchIterationCount = matchIterationCount
     }
     
-    func select() -> [(GeneticStrategy, Int)] {
+    func select() -> [StrategyWinPair] {
         log.log("Playing tournament...")
         let wins = self.playTournament()
         log.log("Wins: \(wins)")
@@ -45,14 +45,15 @@ class OneStepTournamentSelection: SelectionProtocol {
 
 private extension OneStepTournamentSelection {
     
-    func select(from wins: [Int]) -> [(strategy: GeneticStrategy, wins: Int)] {
+    func select(from wins: [Int]) -> [StrategyWinPair] {
         let zip = Array(zip(self.population, wins))
         
         // sort by score
         let sorted = zip.sorted { $0.1 > $1.1 }
-        let selection = sorted.prefix(self.selectionCount)
+        let selection = Array(sorted.prefix(self.selectionCount))
         
-        return Array(selection)
+        let pairs = selection.map { StrategyWinPair(strategy: $0, wins: $1) }
+        return pairs
     }
     
     func playTournament() -> [Int] {
@@ -61,7 +62,7 @@ private extension OneStepTournamentSelection {
         for playerA in self.population {
             var wins = 0
             
-            for _ in 2...self.directTournamentCount {
+            for _ in 0..<self.directTournamentCount {
                 let playerB = self.population.randomElement()!
                 let scorePair = self.playMatch(playerA, against: playerB)
                 if scorePair.A > scorePair.B {

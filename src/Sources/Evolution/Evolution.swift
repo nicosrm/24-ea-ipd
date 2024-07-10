@@ -70,14 +70,14 @@ class Evolution {
     }
     
     /// Run evolution with defined parameters to determine best strategy.
-    func run() -> (GeneticStrategy, Int) {
+    func run() -> StrategyWinPair {
         for epoch in 0..<epochCount {
             log.log("Epoch \(epoch + 1) / \(epochCount)")
             
             // select individuals
             let selection = self.select(self.population.count)
             
-            let best = self.getBest(from: selection)
+            let best = selection.best!
             log.log("Best strategy (wins: \(best.wins))")
             best.strategy.debugPrint(includeHistory: false)
             
@@ -95,8 +95,7 @@ class Evolution {
         // determine best strategy
         log.log("Playing final tournament...")
         let best = self.select(1).first!
-        
-        return (best.strategy, best.wins)
+        return best
     }
 }
 
@@ -106,7 +105,7 @@ private extension Evolution {
     
     func select(
         _ selectionCount: Int
-    ) -> [(strategy: GeneticStrategy, wins: Int)] {
+    ) -> [StrategyWinPair] {
         log.log("Selecting individuals of population...")
         
         let selectionInstance = self.selection.init(
@@ -157,14 +156,5 @@ private extension Evolution {
         let childA = self.mutation.mutate(parentA)
         let childB = self.mutation.mutate(parentB)
         return (childA, childB)
-    }
-    
-    func getBest(
-        from selection: [(GeneticStrategy, Int)]
-    ) -> (strategy: GeneticStrategy, wins: Int) {
-        // sort by score
-        let sorted = selection.sorted { $0.1 > $1.1 }
-        let best = sorted.first!
-        return best
     }
 }

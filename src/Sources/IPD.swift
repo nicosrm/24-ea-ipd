@@ -48,10 +48,10 @@ struct IPD: ParsableCommand {
             selection: selection.getProtocol()
         )
         
-        let (bestStrategy, wins) = evolution.run()
+        let best = evolution.run()
         log.log()
-        log.log("Best strategy (wins: \(wins)")
-        bestStrategy.debugPrint(includeHistory: false)
+        log.log("Best strategy (wins: \(best.wins)")
+        best.strategy.debugPrint(includeHistory: false)
     }
 }
 
