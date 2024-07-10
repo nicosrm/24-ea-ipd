@@ -11,13 +11,13 @@ import ArgumentParser
 struct IPD: ParsableCommand {
     
     @Option(name: .long, help: "Number of individuals in population")
-    var populationSize: Int = 50
+    var populationSize: Int = 100
     
     @Option(name: .long, help: "Number of epochs")
     var epochCount: Int = 30
     
     @Option(name: .long, help: "Number of iterations per match")
-    var matchIterationCount: Int = 25
+    var matchIterationCount: Int = 50
     
     @Option(name: .long, help: "Mutation protocol")
     var mutation: Mutation = .oneFlip
@@ -26,16 +26,16 @@ struct IPD: ParsableCommand {
     var mutationRate: Double
     
     @Option(name: .long, help: "Crossover protocol")
-    var crossover: Crossover = .onePoint
+    var crossover: Crossover = .uniform
     
     @Option(name: .shortAndLong, help: "Recombination rate")
     var recombinationRate: Double
     
     @Option(name: .long, help: "Selection protocol")
-    var selection: Selection = .oneStepTournament
+    var selection: Selection = .tournament
     
     @Option(name: .shortAndLong, help: "Steps of each tournament")
-    var tournamentSteps: Int = 5
+    var tournamentSteps: Int = 10
     
     mutating func run() throws {
         logParameters()

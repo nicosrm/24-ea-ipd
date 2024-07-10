@@ -1,5 +1,5 @@
 //
-//  OneStepTournamentSelection.swift
+//  TournamentSelection.swift
 //
 //  Created by nicosrm
 //
@@ -10,7 +10,7 @@ import Foundation
 /// ``directTournamentCount`` times random opponents to play against. After the
 /// whole population played against random strategies, select the
 /// ``selectionCount`` best (Weicker, 2024).
-class OneStepTournamentSelection: SelectionProtocol {
+class TournamentSelection: SelectionProtocol {
     
     let population: [GeneticStrategy]
     let selectionCount: Int
@@ -43,7 +43,7 @@ class OneStepTournamentSelection: SelectionProtocol {
     }
 }
 
-private extension OneStepTournamentSelection {
+private extension TournamentSelection {
     
     func select(from wins: [Int]) -> [StrategyWinPair] {
         let zip = Array(zip(self.population, wins))

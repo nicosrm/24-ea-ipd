@@ -27,12 +27,12 @@ protocol SelectionProtocol {
 
 enum Selection: String, CaseIterable, ExpressibleByArgument {
     
-    case oneStepTournament = "1-tournament"
+    case tournament = "tournament"
     
     func getProtocol() -> SelectionProtocol.Type {
         switch self {
-        case .oneStepTournament:
-            return OneStepTournamentSelection.self
+        case .tournament:
+            return TournamentSelection.self
         }
     }
 }

@@ -92,32 +92,33 @@ USAGE: ipd [--population-size <population-size>] \
            --mutation-rate <mutation-rate> \
            [--crossover <crossover>] \
            --recombination-rate <recombination-rate> \
-           [--selection <selection>]
+           [--selection <selection>] \
+           [--tournament-steps <tournament-steps>]
 
 OPTIONS:
   --population-size <population-size>
-                          Number of individuals in population (default: 50)
+                          Number of individuals in population (default: 100)
 
   --epoch-count <epoch-count>
                           Number of epochs (default: 30)
 
   --match-iteration-count <match-iteration-count>
-                          Number of iterations per match (default: 25)
+                          Number of iterations per match (default: 50)
 
   --mutation <mutation>   Mutation protocol (values: one-flip, probabilistic; default: one-flip)
 
   -m, --mutation-rate <mutation-rate>
                           Mutation rate
 
-  --crossover <crossover> Crossover protocol (values: one-point, uniform; default: one-point)
+  --crossover <crossover> Crossover protocol (values: one-point, uniform; default: uniform)
 
   -r, --recombination-rate <recombination-rate>
                           Recombination rate
 
-  --selection <selection> Selection protocol (values: 1-tournament; default: 1-tournament)
+  --selection <selection> Selection protocol (values: tournament; default: tournament)
 
   -t, --tournament-steps <tournament-steps>
-                          Steps of each tournament (default: 5)
+                          Steps of each tournament (default: 10)
 
   -h, --help              Show help information.
 ```
