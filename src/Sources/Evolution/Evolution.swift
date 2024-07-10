@@ -23,6 +23,7 @@ class Evolution {
     let recombinationRate: Double
     
     let selection: any SelectionProtocol.Type
+    let tournamentSteps: Int
     
     /// Create new instance of ``Evolution``.
     ///
@@ -38,7 +39,8 @@ class Evolution {
         mutationRate: Double,
         crossover: any CrossoverProtocol.Type,
         recombinationRate: Double,
-        selection: any SelectionProtocol.Type
+        selection: any SelectionProtocol.Type,
+        tournamentSteps: Int
     ) {
         assert(populationSize >= 2,
                "Population must have at least two individuals.")
@@ -67,6 +69,9 @@ class Evolution {
         self.recombinationRate = recombinationRate
         
         self.selection = selection
+        
+        assert(tournamentSteps >= 1, "Tournament steps must be at least 1!")
+        self.tournamentSteps = tournamentSteps
     }
     
     /// Run evolution with defined parameters to determine best strategy.
@@ -111,7 +116,7 @@ private extension Evolution {
         let selectionInstance = self.selection.init(
             population: self.population,
             selectionCount: selectionCount,
-            directTournierCount: 5,
+            directTournierCount: self.tournamentSteps,
             matchIterationCount: self.matchIterationCount
         )
         let selection = selectionInstance.select()

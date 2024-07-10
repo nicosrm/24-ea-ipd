@@ -34,6 +34,9 @@ struct IPD: ParsableCommand {
     @Option(name: .long, help: "Selection protocol")
     var selection: Selection = .oneStepTournament
     
+    @Option(name: .shortAndLong, help: "Steps of each tournament")
+    var tournamentSteps: Int = 5
+    
     mutating func run() throws {
         logParameters()
         
@@ -45,7 +48,8 @@ struct IPD: ParsableCommand {
             mutationRate: mutationRate,
             crossover: crossover.getProtocol(),
             recombinationRate: recombinationRate,
-            selection: selection.getProtocol()
+            selection: selection.getProtocol(),
+            tournamentSteps: tournamentSteps
         )
         
         let best = evolution.run()
@@ -66,6 +70,7 @@ private extension IPD {
         log.log("recombination: \(crossover.rawValue)")
         log.log("recombination rate: \(recombinationRate)")
         log.log("selection: \(selection.rawValue)")
+        log.log("tournament steps: \(tournamentSteps)")
         log.log("\n")
     }
 }

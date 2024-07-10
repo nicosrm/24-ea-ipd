@@ -60,7 +60,8 @@ struct Example {
         mutationRate: Double,
         crossover: Crossover,
         recombinationRate: Double,
-        selection: Selection
+        selection: Selection,
+        tournamentSteps: Int
     ) {
         log.log("population size: \(populationSize)")
         log.log("epoch count: \(epochCount)")
@@ -99,7 +100,8 @@ struct Example {
             mutationRate: mutationRate,
             crossover: crossoverProtocol,
             recombinationRate: recombinationRate,
-            selection: selectionProtocol
+            selection: selectionProtocol,
+            tournamentSteps: tournamentSteps
         )
         let best = evolution.run()
         log.log()

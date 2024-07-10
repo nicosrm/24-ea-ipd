@@ -116,6 +116,9 @@ OPTIONS:
 
   --selection <selection> Selection protocol (values: 1-tournament; default: 1-tournament)
 
+  -t, --tournament-steps <tournament-steps>
+                          Steps of each tournament (default: 5)
+
   -h, --help              Show help information.
 ```
 
