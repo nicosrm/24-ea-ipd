@@ -83,7 +83,7 @@ class Evolution {
             let selection = self.select(self.population.count)
             
             let best = selection.best!
-            log.log("Best strategy (wins: \(best.score))")
+            log.log("Best strategy (score: \(best.score))")
             best.strategy.debugPrint(includeHistory: false)
             
             // create new population by performing recombination / mutation
