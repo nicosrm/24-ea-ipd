@@ -90,6 +90,7 @@ struct Example {
         
         let selectionProtocol: SelectionProtocol.Type = switch selection {
         case .tournament: TournamentSelection.self
+        case .established: EstablishedStrategySelection.self
         }
         
         let evolution = Evolution(
