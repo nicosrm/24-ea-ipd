@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "IPD",
+    name: "ipd",
     platforms: [
         .macOS(.v10_15)
     ],
@@ -12,7 +12,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "IPD",
+            name: "ipd",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]),

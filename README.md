@@ -59,7 +59,7 @@ algorithms.
 ```
 $ cd src
 $ swift build
-$ swift run IPD -m <mutation-rate> -r <recombination-rate>
+$ swift run ipd -m <mutation-rate> -r <recombination-rate>
 ```
 
 The resulting info logs will be stored in `src/logs/`.
@@ -71,7 +71,7 @@ The resulting info logs will be stored in `src/logs/`.
 $ docker build -t ipd .
 $ docker run -it --rm --name ipd ipd
 # now inside container
-$ swift run IPD -m <mutation-rate> -r <recombination-rate>
+$ swift run ipd -m <mutation-rate> -r <recombination-rate>
 ```
 
 To copy the logs, run the following command:
@@ -84,7 +84,7 @@ $ docker cp ipd:logs/. src/logs
 ### Arguments
 
 ```
-$ swift run IPD --help
+$ swift run ipd --help
 USAGE: ipd [--population-size <population-size>] \
            [--epoch-count <epoch-count>] \
            [--match-iteration-count <match-iteration-count>] \
