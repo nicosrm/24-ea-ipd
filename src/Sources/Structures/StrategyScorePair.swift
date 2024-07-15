@@ -6,6 +6,8 @@
 
 import Foundation
 
+/// Helper struct for ``GeneticStrategy`` with a score achieved during a match,
+/// tournament, selection procedure etc.
 struct StrategyScorePair {
     
     let strategy: GeneticStrategy
@@ -19,12 +21,13 @@ struct StrategyScorePair {
 
 extension [StrategyScorePair] {
     
-    var sortedByScore: Self {
+    var sortedByScore: [StrategyScorePair] {
         let sorted = self.sorted { $0.score > $1.score }
         return sorted
     }
 
-    var best: Self.Element? {
+    /// Best strategy, i.e. the strategy of the array with the highest score.
+    var best: StrategyScorePair? {
         return self.sortedByScore.first
     }
 }
