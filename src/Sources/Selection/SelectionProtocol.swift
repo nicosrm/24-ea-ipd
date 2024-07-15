@@ -22,7 +22,7 @@ protocol SelectionProtocol {
         matchIterationCount: Int
     )
     
-    func select() -> [StrategyWinPair]
+    func select() -> [StrategyScorePair]
 }
 
 enum Selection: String, CaseIterable, ExpressibleByArgument {

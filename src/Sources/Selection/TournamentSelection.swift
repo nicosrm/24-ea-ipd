@@ -30,7 +30,7 @@ class TournamentSelection: SelectionProtocol {
         self.matchIterationCount = matchIterationCount
     }
     
-    func select() -> [StrategyWinPair] {
+    func select() -> [StrategyScorePair] {
         log.log("Playing tournament...")
         let wins = self.playTournament()
         log.log("Wins: \(wins)")
@@ -38,21 +38,21 @@ class TournamentSelection: SelectionProtocol {
         log.log("Selecting...")
         let selection = self.select(from: wins)
         log.log("Selected \(selection.count) strategies")
-        log.log("with wins: \(selection.map { $0.wins })")
+        log.log("with wins: \(selection.map { $0.score })")
         return selection
     }
 }
 
 private extension TournamentSelection {
     
-    func select(from wins: [Int]) -> [StrategyWinPair] {
+    func select(from wins: [Int]) -> [StrategyScorePair] {
         let zip = Array(zip(self.population, wins))
         
         // sort by score
         let sorted = zip.sorted { $0.1 > $1.1 }
         let selection = Array(sorted.prefix(self.selectionCount))
         
-        let pairs = selection.map { StrategyWinPair(strategy: $0, wins: $1) }
+        let pairs = selection.map { StrategyScorePair(strategy: $0, score: $1) }
         return pairs
     }
     

@@ -106,7 +106,7 @@ struct Example {
         let best = evolution.run()
         log.log()
         log.log(best.strategy.moveTable.sorted(by: <))
-        log.log("with wins \(best.wins)")
+        log.log("with wins \(best.score)")
     }
     
     static func printDivider() {

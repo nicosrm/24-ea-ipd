@@ -75,7 +75,7 @@ class Evolution {
     }
     
     /// Run evolution with defined parameters to determine best strategy.
-    func run() -> StrategyWinPair {
+    func run() -> StrategyScorePair {
         for epoch in 0..<epochCount {
             log.log("Epoch \(epoch + 1) / \(epochCount)")
             
@@ -83,7 +83,7 @@ class Evolution {
             let selection = self.select(self.population.count)
             
             let best = selection.best!
-            log.log("Best strategy (wins: \(best.wins))")
+            log.log("Best strategy (wins: \(best.score))")
             best.strategy.debugPrint(includeHistory: false)
             
             // create new population by performing recombination / mutation
@@ -110,7 +110,7 @@ private extension Evolution {
     
     func select(
         _ selectionCount: Int
-    ) -> [StrategyWinPair] {
+    ) -> [StrategyScorePair] {
         log.log("Selecting individuals of population...")
         
         let selectionInstance = self.selection.init(

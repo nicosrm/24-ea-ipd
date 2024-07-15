@@ -54,7 +54,7 @@ struct IPD: ParsableCommand {
         
         let best = evolution.run()
         log.log()
-        log.log("Best strategy (wins: \(best.wins)")
+        log.log("Best strategy (wins: \(best.score)")
         best.strategy.debugPrint(includeHistory: false)
     }
 }

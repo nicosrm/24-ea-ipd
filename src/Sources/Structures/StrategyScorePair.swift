@@ -1,26 +1,26 @@
 //
-//  StrategyWinPair.swift
+//  StrategyScorePair.swift
 //
 //  Created by nicosrm
 //
 
 import Foundation
 
-struct StrategyWinPair {
+struct StrategyScorePair {
     
     let strategy: GeneticStrategy
-    let wins: Int
+    let score: Int
     
-    init(strategy: GeneticStrategy, wins: Int) {
+    init(strategy: GeneticStrategy, score: Int) {
         self.strategy = strategy
-        self.wins = wins
+        self.score = score
     }
 }
 
-extension [StrategyWinPair] {
+extension [StrategyScorePair] {
     
     var sortedByScore: Self {
-        let sorted = self.sorted { $0.wins > $1.wins }
+        let sorted = self.sorted { $0.score > $1.score }
         return sorted
     }
 
