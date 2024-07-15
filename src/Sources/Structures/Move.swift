@@ -33,6 +33,16 @@ extension Move: Comparable {
     }
 }
 
+extension Move: CustomStringConvertible {
+    
+    var description: String {
+        return switch self {
+        case .C: "C"
+        case .D: "D"
+        }
+    }
+}
+
 // MARK: - MovePair
 
 struct MovePair: Hashable {
