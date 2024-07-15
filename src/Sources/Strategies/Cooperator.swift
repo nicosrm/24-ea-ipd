@@ -12,7 +12,10 @@ class Cooperator: StrategyProtocol {
     var name: String
     var history: MoveHistory
     
-    init(history: MoveHistory) {
+    required init(
+        history: MoveHistory,
+        moveTable: [[Move] : Move]? = nil
+    ) {
         self.name = "Unconditional cooperator"
         self.history = history
     }

@@ -32,7 +32,7 @@ struct IPD: ParsableCommand {
     var recombinationRate: Double
     
     @Option(name: .long, help: "Selection protocol")
-    var selection: Selection = .tournament
+    var selection: Selection = .established
     
     @Option(name: .shortAndLong, help: "Steps of each tournament")
     var tournamentSteps: Int = 10

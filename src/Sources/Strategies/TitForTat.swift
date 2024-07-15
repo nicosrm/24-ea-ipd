@@ -13,9 +13,12 @@ class TitForTat: StrategyProtocol {
     var name: String
     var history: MoveHistory
     
-    init(initialHistory: MoveHistory) {
+    required init(
+        history: MoveHistory,
+        moveTable: [[Move] : Move]? = nil
+    ) {
         self.name = "Tit for Tat"
-        self.history = initialHistory
+        self.history = history
     }
     
     func makeMove(opponentHistory: MoveHistory) -> Move {

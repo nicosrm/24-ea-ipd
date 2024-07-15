@@ -115,7 +115,7 @@ OPTIONS:
   -r, --recombination-rate <recombination-rate>
                           Recombination rate
 
-  --selection <selection> Selection protocol (values: tournament; default: tournament)
+  --selection <selection> Selection protocol (values: tournament, established; default: established)
 
   -t, --tournament-steps <tournament-steps>
                           Steps of each tournament (default: 10)
