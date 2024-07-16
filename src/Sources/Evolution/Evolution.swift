@@ -133,10 +133,15 @@ private extension Evolution {
             let parentA = selection[2 * i]
             let parentB = selection[2 * i + 1]
             
-            let (childA, childB) = self.recombineOrMutate(
+            var (childA, childB) = self.recombine(
                 parentA: parentA,
                 parentB: parentB
             )
+            (childA, childB) = self.mutate(
+                parentA: parentA,
+                parentB: parentB
+            )
+            
             newPopulation.append(childA)
             newPopulation.append(childB)
         }
@@ -145,10 +150,9 @@ private extension Evolution {
         return newPopulation
     }
     
-    /// Recombine (i.e. crossover) or mutate passed ``GeneticStrategy``s based
-    /// on drawn random probability. Use initially passed ``recombinationRate``,
-    /// ``crossover``, and ``mutation``.
-    func recombineOrMutate(
+    /// Recombine (i.e. crossover) passed ``GeneticStrategy``s based on drawn
+    /// random probability.
+    func recombine(
         parentA: GeneticStrategy,
         parentB: GeneticStrategy
     ) -> (GeneticStrategy, GeneticStrategy) {
@@ -157,7 +161,14 @@ private extension Evolution {
         if u <= self.recombinationRate {
             return self.crossover.crossover(parentA, parentB)
         }
-        
+        return (parentA, parentB)
+    }
+    
+    /// Mutate passed ``GeneticStrategy``s.
+    func mutate(
+        parentA: GeneticStrategy,
+        parentB: GeneticStrategy
+    ) -> (GeneticStrategy, GeneticStrategy) {
         let childA = self.mutation.mutate(parentA)
         let childB = self.mutation.mutate(parentB)
         return (childA, childB)
