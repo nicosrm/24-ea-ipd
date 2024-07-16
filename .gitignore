@@ -2,6 +2,10 @@ src/logs
 Package.resolved
 
 .DS_Store
+.vscode
+
+doc/doc.pdf
+
 .build/
 /Packages
 xcuserdata/
