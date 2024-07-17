@@ -4,5 +4,6 @@ WORKDIR /ipd
 
 COPY src .
 
-RUN swift package resolve && \
+RUN mkdir -p logs && \
+    swift package resolve && \
     swift build
