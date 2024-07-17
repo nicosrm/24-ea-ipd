@@ -86,7 +86,7 @@ $q$-stufige Turnierselektion, wobei das $q$ per CLI-Argument einstellbar ist.
 Diese selektiert basierend auf den Gewinnen, die die Strategien gegen ihre
 Gegner erzielen konnten. (2) Eine fitness-proportionale Selektion basierend auf
 den Punkten, den die Individuen gegen eine Teilmenge von Axelrod's Strategien
-(Axelrod, 1997) erzielen konnten. Letztere wird im Code
+[@axelrod1997] erzielen konnten. Letztere wird im Code
 als `EstablishedStrategySelection` geführt.
 
 Es wurden die folgenden *etablierten* Strategien implementiert:
