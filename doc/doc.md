@@ -161,8 +161,20 @@ Turnierselektion.
 
 ## Ergebnisse
 
-TBA
+![Defection Rate im Verhältnis zur Epoche](./plot/plot.svg)
 
+```
+Datei 1            Datei 2
+[C, C, C] --> C    [C, C, C] --> D
+[C, C, D] --> C    [C, C, D] --> C
+[C, D, C] --> C    [C, D, C] --> C
+[C, D, D] --> D    [C, D, D] --> D
+[D, C, C] --> D    [D, C, C] --> C
+[D, C, D] --> D    [D, C, D] --> C
+[D, D, C] --> C    [D, D, C] --> C
+[D, D, D] --> C    [D, D, D] --> D
+DR: 0.375          DR: 0.375
+```
 
 ## Literatur
 

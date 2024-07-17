@@ -5,6 +5,7 @@ Package.resolved
 .vscode
 
 doc/doc.pdf
+.venv
 
 .build/
 /Packages
