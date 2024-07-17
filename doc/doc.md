@@ -3,11 +3,11 @@ author: nicosrm
 title: Iterative Prisoner's Dilemma
 subtitle: Projekt für Evolutionäre Algorithmen
 subject: Projektdokumentation
-institution: Hochschule für Technik, Wirtschaft und Kultur Leipzig
 date: 18.07.2024
 lang: de-DE
 papersize: a4
 boxlinks: true
+bibliography: references.bib
 ---
 
 # Iterative Prisoner's Dilemma
@@ -17,7 +17,7 @@ boxlinks: true
 Das *Prisoner's Dilemma* (PD) ist ein Gedankenexperiment aus der Spieltheorie,
 bei dem es um zwei Agenten geht, die verhaftet und in getrennten, isolierten
 Zellen untergracht werden. Die Staatsanwaltschaft bietet ihnen das sogenannte
-*Prisoner's Dilemma* an (Kuhn, 2019):
+*Prisoner's Dilemma* an [@kuhn2019]:
 
 > Sie haben die Wahl, zu gestehen oder zu schweigen. Wenn Sie gestehen und Ihr
 > Komplize schweigt, werde ich alle Anklagen gegen Sie fallen lassen und Ihre
@@ -28,9 +28,9 @@ Zellen untergracht werden. Die Staatsanwaltschaft bietet ihnen das sogenannte
 > entlassen werden. Wenn Sie beide schweigen, muss ich mich mit symbolischen
 > Strafen für den Besitz von Schusswaffen begnügen. Wenn ihr gestehen wollt,
 > müsst ihr vor meiner Rückkehr morgen früh eine Nachricht beim Gefängniswärter 
-> hinterlassen (Kuhn, 2019).
+> hinterlassen [@kuhn2019].
 
-Dies führt zu der folgenden Tabelle (Axelrod, 1997):
+Dies führt zu der folgenden Tabelle [@axelrod1997]:
 
 |               | **Cooperate**  | **Defect**     |
 |---------------|:--------------:|:--------------:|
@@ -39,12 +39,12 @@ Dies führt zu der folgenden Tabelle (Axelrod, 1997):
 
 Dabei steht $R$ für den *Reward*, den beide für die gemeinsame Kooperation
 erhalten, $S$ für den *Sucker's Payoff*, $T$ für die *Temptation to Defect* und
-$P$ für die *Punishment* für den gemeinsamen Verrat (Axelrod, 1997).
+$P$ für die *Punishment* für den gemeinsamen Verrat [@axelrod1997].
 
 Die Gefangenen befinden sich in dieser Situation in einem Dilemma, in dem ein
 Geständnis für jeden von ihnen die bessere Option ist, unabhängig von der
 Entscheidung des anderen. Wenn jedoch beide gestehen, ist das Ergebnis für beide
-schlechter, als wenn sie beide geschwiegen hätten (Kuhn, 2019).
+schlechter, als wenn sie beide geschwiegen hätten [@kuhn2019].
 
 Vermeintliche PD-Situationen lassen sich oft besser durch eine iterierte Version
 des Spiels darstellen. In diesen iterierten Gefangenendilemmata (*Iterative
@@ -100,8 +100,8 @@ Es wurden die folgenden *etablierten* Strategien implementiert:
 | Suspicious TFT    | Verraten in erster Runde, danach wie Gegner    |
 | Tit for Two Tats  | Kooperieren, außer Gegner hat 2x verraten      |
 
-Als Rekombinationen wurde der One-Point-Crossover (Weicker, 2024), sowie der
-Uniform-Crossover (Weicker, 2024) implementiert.
+Als Rekombinationen wurde der One-Point-Crossover [@weicker2015], sowie der
+Uniform-Crossover [@weicker2015] implementiert.
 
 Weiterhin wurden die One-Flip-Mutation umgesetzt, welche die Aktion für eine
 zufällige Bedingung tauscht. Als Alternative kommt die probabilistische Mutation
@@ -134,7 +134,7 @@ Das o.g. Konzept wurde in Swift umgesetzt und kann lokal oder in einem
 [Docker](https://www.docker.com/)- bzw. [Podman](https://podman.io/)-Container
 gestartet werden. Eine Anleitung zur Verwendung kann in der `README` des
 Repositories unter dem Abschnitt
-[„Usage“](https://github.com/nicosrm/24-ea-ipd/blob/main/README.md#usage)[^1]
+[„Usage“](https://github.com/nicosrm/24-ea-ipd/blob/main/README.md#usage)
 nachgeschlagen werden.
 
 Es müssen lediglich die Mutations- und Rekombinationsrate beim Start des
@@ -164,6 +164,7 @@ Turnierselektion.
 TBA
 
 
-<!-- ----------------------------------------------------------------------- -->
+## Literatur
 
-[^1]: [`https://github.com/nicosrm/24-ea-ipd/blob/main/README.md#usage`](https://github.com/nicosrm/24-ea-ipd/blob/main/README.md#usage)
+::: {#refs}
+:::
