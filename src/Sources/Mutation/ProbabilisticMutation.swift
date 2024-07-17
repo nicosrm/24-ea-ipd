@@ -8,7 +8,7 @@ import Foundation
 
 /// Draw a random number for each opponent's move set. If the random number
 /// exceeds the ``mutationRate``, flip the played move. Take the parent's move
-/// otherwise (Weicker, 2024).
+/// otherwise (Weicker, 2015).
 struct ProbabilisticMutation: MutationProtocol {
     
     let mutationRate: Double?

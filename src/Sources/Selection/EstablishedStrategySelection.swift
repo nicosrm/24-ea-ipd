@@ -6,7 +6,7 @@
 
 import Foundation
 
-/// Fitness proportionate selection (Weicker, 2024) based on the scores of
+/// Fitness proportionate selection (Weicker, 2015) based on the scores of
 /// matches of each indiviual of the ``population`` against a sample of
 /// Axelrod's ``establishedStrategies`` (Kuhn, 2019).
 class EstablishedStrategySelection: SelectionProtocol {
@@ -71,7 +71,7 @@ private extension EstablishedStrategySelection {
     }
     
     /// Select passsed ``StrategyScorePair``s based on fitness proportionate
-    /// selection (Weicker, 2024).
+    /// selection (Weicker, 2015).
     func selectFitnessProportionally(
         _ pairs: [StrategyScorePair]
     ) -> [StrategyScorePair] {

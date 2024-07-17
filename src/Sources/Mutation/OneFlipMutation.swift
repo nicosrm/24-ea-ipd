@@ -6,7 +6,7 @@
 
 import Foundation
 
-/// Flip one random move of the ``GeneticStrategy/moveTable`` (Weicker, 2024).
+/// Flip one random move of the ``GeneticStrategy/moveTable`` (Weicker, 2015).
 struct OneFlipMutation: MutationProtocol {
     
     // Mutation rate not necessary for this mutation operator

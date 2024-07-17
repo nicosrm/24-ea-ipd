@@ -13,7 +13,7 @@ protocol MutationProtocol {
     /// Might be `nil` if mutation operator is not probibalistic.
     ///
     /// Optimal mutation rate is the reciprocal length of the move table
-    /// (Weicker, 2024).
+    /// (Weicker, 2015).
     var mutationRate: Double? { get }
     
     /// Mutate passed strategy based on ``mutationRate``, i.e. randomly

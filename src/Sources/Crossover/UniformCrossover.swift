@@ -7,7 +7,7 @@
 import Foundation
 
 /// Decide for each key of the ``GeneticStrategy/moveTable`` individually and
-/// randomly /// from which parent to take the move (Weicker, 2024).
+/// randomly /// from which parent to take the move (Weicker, 2015).
 struct UniformCrossover: CrossoverProtocol {
     
     static func crossover(

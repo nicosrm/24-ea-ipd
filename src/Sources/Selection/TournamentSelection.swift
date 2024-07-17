@@ -9,7 +9,7 @@ import Foundation
 /// Two-step tournament selection selecting for each strategy
 /// ``directTournamentCount`` times random opponents to play against. After the
 /// whole population played against random strategies, select the
-/// ``selectionCount`` best (Weicker, 2024).
+/// ``selectionCount`` best (Weicker, 2015).
 class TournamentSelection: SelectionProtocol {
     
     let population: [GeneticStrategy]
