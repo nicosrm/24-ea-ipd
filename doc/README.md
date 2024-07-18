@@ -5,6 +5,14 @@ a [`pandoc`](https://pandoc.org/) markdown file and once as a in GitHub
 previewable [GitHub Flavoured Markdown](https://github.github.com/gfm/) (GFM)
 file.
 
+When in doubt, the `pandoc` version is the single source of truth. To build
+the GFM version, run the following command in this directory.
+
+```
+$ podman run --rm -v "$(pwd):/data" pandoc/latex doc.pandoc.md \
+    --shift-heading-level-by=-1 --citeproc --to=gfm -o doc.preview.md
+```
+
 To build a PDF version of the documentation, run the following command in this
 directory.
 
