@@ -205,10 +205,10 @@ $ swift run ipd --epoch-count {50 | 200} \
 ## Ergebnisse
 
 In diesem Abschnitt werden die im vorherigen Abschnitt erläuterten Experimente
-ausgewertet. Als Metrik wird eine *Defection Rate* $\operatorname{r_D}$
+ausgewertet. Als Metrik wird eine *Defection Rate* $\text{r}_D$
 eingeführt, d.h. das Verhältnis der Defections zu den Gesamt-Aktionen.
 
-$$\operatorname{r}_D = \frac{\#~\text{defections}}{\#~\text{actions}}$$
+$$\text{r}_D = \frac{\#~\text{defections}}{\#~\text{actions}}$$
 
 
 ### Bewertung anhand etablierter Strategien
@@ -235,18 +235,18 @@ verstehen. Beispielweise ist die Regel mit der Bedingung $(C, C, D)$ und Aktion
 $D$ wie folgt zu interpretieren: wenn der Gegner oder die Gegnerin zunächst zwei
 mal kooperiert $(C)$ und einmal verraten $(D)$ hat, ist unser Zug Verrat $(D)$.
 
-| Bedingung            | File 1  | File 2  |  File 3 | Tit for Tat |
-|----------------------|:-------:|:-------:|:-------:|:-----------:|
-| $(C, C, C)$          | $C$     | $C$     | $D$     | $C$         |
-| $(C, C, D)$          | $D$     | $C$     | $D$     | $D$         |
-| $(C, D, C)$          | $C$     | $C$     | $D$     | $C$         |
-| $(C, D, D)$          | $D$     | $C$     | $D$     | $D$         |
-| $(D, C, C)$          | $C$     | $C$     | $C$     | $C$         |
-| $(D, C, D)$          | $D$     | $D$     | $D$     | $D$         |
-| $(D, D, C)$          | $C$     | $D$     | $D$     | $C$         |
-| $(D, D, D)$          | $C$     | $D$     | $D$     | $D$         |
-|                      |         |         |         |             |
-| $\operatorname{r}_D$ | $0.375$ | $0.375$ | $0.875$ | $0.5$       |
+| Bedingung    | File 1  | File 2  |  File 3 | Tit for Tat |
+|--------------|:-------:|:-------:|:-------:|:-----------:|
+| $(C, C, C)$  | $C$     | $C$     | $D$     | $C$         |
+| $(C, C, D)$  | $D$     | $C$     | $D$     | $D$         |
+| $(C, D, C)$  | $C$     | $C$     | $D$     | $C$         |
+| $(C, D, D)$  | $D$     | $C$     | $D$     | $D$         |
+| $(D, C, C)$  | $C$     | $C$     | $C$     | $C$         |
+| $(D, C, D)$  | $D$     | $D$     | $D$     | $D$         |
+| $(D, D, C)$  | $C$     | $D$     | $D$     | $C$         |
+| $(D, D, D)$  | $C$     | $D$     | $D$     | $D$         |
+|              |         |         |         |             |
+| $\text{r}_D$ | $0.375$ | $0.375$ | $0.875$ | $0.5$       |
 
 Dabei ist zu erkennen, dass die evolvierte Strategie aus File 1 nahezu der
 *Tit-for-Tat*-Strategie (siehe Abschnitt [Konzept](#konzept)). Ausschließlich
@@ -278,18 +278,18 @@ wird. Bei der Betrachtung der schlussendlich finalen evolvierten Strategie
 (siehe folgende Tabelle) wird allerdings erkenntlich, dass diese zugunsten
 der annähernden *Tit-for-Tat*-Strategie aufgegeben wird.
 
-| Bedingung            | File 1  | Tit for Tat |
-|----------------------|:-------:|:-----------:|
-| $(C, C, C)$          | $C$     | $C$         |
-| $(C, C, D)$          | $D$     | $D$         |
-| $(C, D, C)$          | $C$     | $C$         |
-| $(C, D, D)$          | $D$     | $D$         |
-| $(D, C, C)$          | $C$     | $C$         |
-| $(D, C, D)$          | $D$     | $D$         |
-| $(D, D, C)$          | $C$     | $C$         |
-| $(D, D, D)$          | $C$     | $D$         |
-|                      |         |             |
-| $\operatorname{r}_D$ | $0.375$ | $0.5$       |
+| Bedingung    | File 1  | Tit for Tat |
+|--------------|:-------:|:-----------:|
+| $(C, C, C)$  | $C$     | $C$         |
+| $(C, C, D)$  | $D$     | $D$         |
+| $(C, D, C)$  | $C$     | $C$         |
+| $(C, D, D)$  | $D$     | $D$         |
+| $(D, C, C)$  | $C$     | $C$         |
+| $(D, C, D)$  | $D$     | $D$         |
+| $(D, D, C)$  | $C$     | $C$         |
+| $(D, D, D)$  | $C$     | $D$         |
+|              |         |             |
+| $\text{r}_D$ | $0.375$ | $0.5$       |
 
 Weiterhin ist es faszinierend – wenn auch nur durch die probabilistische Natur
 des Evolutionsprozesses geschuldet –, dass die Strategie der evolvierten
