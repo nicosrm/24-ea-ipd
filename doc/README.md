@@ -1,11 +1,16 @@
 # `doc`
 
-This directory contains the resulting documentation of the project. Note that
-it is written in German.
+This directory contains the resulting documentation of the project, once as
+a [`pandoc`](https://pandoc.org/) markdown file and once as a in GitHub
+previewable [GitHub Flavoured Markdown](https://github.github.com/gfm/) (GFM)
+file.
 
-To build a PDF-Version of `doc.md`, run the following command in this directory.
+To build a PDF version of the documentation, run the following command in this
+directory.
 
 ```
-$ docker run --rm -v "$(pwd):/data" pandoc/latex doc.md \
+$ docker run --rm -v "$(pwd):/data" pandoc/latex doc.pandoc.md \
     --shift-heading-level-by=-1 --citeproc -o doc.pdf
 ```
+
+Note that it the documentation written in German.

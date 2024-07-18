@@ -40,11 +40,11 @@ algorithms.
 
 ## Structure
 
-| Path                                 | Description                                           |
-|--------------------------------------|-------------------------------------------------------|
-| `src/`                               | source files                                          |
-| [`doc/doc.md`](doc/doc.md)           | documentation                                         |
-| [`bibliography.md`](bibliography.md) | bibliography notices                                  |
+| Path                                       | Description                                           |
+|--------------------------------------------|-------------------------------------------------------|
+| `src/`                                     | source files                                          |
+| [`doc/doc.preview.md`](doc/doc.preview.md) | documentation                                         |
+| [`bibliography.md`](bibliography.md)       | bibliography notices                                  |
 
 
 ## Context
