@@ -134,13 +134,13 @@ let best = select(1).first!
 Das o.g. Konzept wurde in Swift umgesetzt und kann lokal oder in einem
 [Docker](https://www.docker.com/)- bzw. [Podman](https://podman.io/)-Container
 gestartet werden. Eine Anleitung zur Verwendung kann in der `README` des
-Repositories unter dem Abschnitt
+[Repositories](https://github.com/nicosrm/24-ea-ipd/) unter dem Abschnitt
 [Usage](https://github.com/nicosrm/24-ea-ipd/blob/main/README.md#usage)
 nachgeschlagen werden.
 
-Es müssen lediglich die Mutations- und Rekombinationsrate beim Start des
-Programmes als Argument übergeben werden. Die anderen Argumente sind wie folgt
-standardmäßig initialisiert.
+Beim Start des Programms muss die Mutations- und Rekombinationsrate als
+Argumente übergeben werden. Die anderen Argumente sind wie folgt standardmäßig
+initialisiert.
 
 | Argument               | Standardwert  |
 |------------------------|---------------|
