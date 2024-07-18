@@ -6,6 +6,7 @@ subject: Projektdokumentation
 date: 18.07.2024
 lang: de-DE
 papersize: a4
+geometry: margin=3cm
 colorlinks: true
 bibliography: references.bib
 ---
