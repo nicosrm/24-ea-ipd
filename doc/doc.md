@@ -338,7 +338,27 @@ gewählt wurde.
 
 ## Fazit
 
-TBA
+Im Rahmen dieses Projektes wurde ein stark parametrisierbarer, evolutionärer
+Algorithmus zur Findung von Strategien für das *Iterated Prisoner's Delimma*
+konzipiert, implementiert und getestet. Dabei wurden zwei verschiedene Ansätze
+zur Bewertung und Selektion betrachtet und entsprechende Verbesserungsvorschläge
+erörtert.
+
+Dafür wurde der Regelsatz als Genotyp verwendet und einem Evolutionsprozess
+unterzogen. Dieser bestand aus einer Elternselektion, für welche im Rahmen
+dieses Projektes zwei verschiedene Ansätze untersucht wurden. Die selektierten
+Eltern wurden anschließend nach einer bestimmten Wahrscheinlichkeit rekombiniert
+und schließlich mutiert. Die resultierenden Individuen bildeten die neue
+Population.
+
+Durch diesen Generationenzyklus wurden verschiedene Strategien generiert. Zwei
+exemplarisch ausgewählte entsprachen nahezu der etablierten
+*Tit-for-Tat*-Strategie, eine andere der möglicherweise als naiv betrachtbaren
+*Defector*-Strategie [@kuhn2019]. Somit konnten Strategien evolviert werden,
+welche im alltäglichen, gesellschaftlichen Leben beobachtbar sind: zum einen die
+bekannte „Wie du mir, so ich dir“-Strategie und zum anderen die egoistische
+Strategie, welche stets verrät, um sich selbst in eine bessere Situation zu
+bringen.
 
 
 ## Literatur
