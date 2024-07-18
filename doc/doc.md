@@ -208,7 +208,7 @@ In diesem Abschnitt werden die im vorherigen Abschnitt erläuterten Experimente
 ausgewertet. Als Metrik wird eine *Defection Rate* $\text{r}_D$
 eingeführt, d.h. das Verhältnis der Defections zu den Gesamt-Aktionen.
 
-$$\text{r}_D = \frac{\#~\text{defections}}{\#~\text{actions}}$$
+$$\text{r}_D = \frac{\vert\text{defections}\vert}{\vert\text{actions}\vert}$$
 
 
 ### Bewertung anhand etablierter Strategien
